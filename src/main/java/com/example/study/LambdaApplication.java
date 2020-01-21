@@ -41,16 +41,11 @@ public class LambdaApplication implements CommandLineRunner {
         	        
         	);
         
-        IntSummaryStatistics intSummaryStatistics 
-        = new IntSummaryStatistics(); 
-
     List<Integer> list 
         = Arrays.asList(10, 20, 30, 40, 50); 
-    Iterator<Integer> iterator = list.listIterator(); 
-    while (iterator.hasNext()) { 
-        // Add the integers to the IntSummaryStatistics object 
-        intSummaryStatistics.accept(iterator.next()); 
-    }      // Use various methods to obtain the data 
+    
+    IntSummaryStatistics intSummaryStatistics = list.stream().mapToInt(i -> i).summaryStatistics();
+    
         System.out.println("The count of values is "
                            + intSummaryStatistics.getCount()); 
         System.out.println("The average of values is "
