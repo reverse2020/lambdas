@@ -1,5 +1,9 @@
 package com.example.study;
 
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.Iterator;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import org.springframework.boot.CommandLineRunner;
@@ -32,5 +36,32 @@ public class LambdaApplication implements CommandLineRunner {
 		 */        
         System.out.println(IntStream.of(-9, -18, 54, 8, 7, 14, 3,-99).max().getAsInt());
 
+        IntStream.range(0, 1000).parallel().forEach(
+        		nbr -> System.out.println(nbr)
+        	        
+        	);
+        
+        IntSummaryStatistics intSummaryStatistics 
+        = new IntSummaryStatistics(); 
+
+    List<Integer> list 
+        = Arrays.asList(10, 20, 30, 40, 50); 
+    Iterator<Integer> iterator = list.listIterator(); 
+    while (iterator.hasNext()) { 
+        // Add the integers to the IntSummaryStatistics object 
+        intSummaryStatistics.accept(iterator.next()); 
+    }      // Use various methods to obtain the data 
+        System.out.println("The count of values is "
+                           + intSummaryStatistics.getCount()); 
+        System.out.println("The average of values is "
+                           + intSummaryStatistics.getAverage()); 
+        System.out.println("The sum of values is "
+                           + intSummaryStatistics.getSum()); 
+        System.out.println("The maximum of values is "
+                           + intSummaryStatistics.getMax()); 
+        System.out.println("The minimum of values is "
+                           + intSummaryStatistics.getMin()); 
+        System.out.println("The string representation is"); 
+        System.out.println(intSummaryStatistics.toString()); 
 	}
 }
