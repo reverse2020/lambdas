@@ -41,10 +41,9 @@ public class LambdaApplication implements CommandLineRunner {
         	        
         	);
         
-    List<Integer> list 
-        = Arrays.asList(10, 20, 30, 40, 50); 
+    int [] list= {10, 20, 30, 40, 50}; 
     
-    IntSummaryStatistics intSummaryStatistics = list.stream().mapToInt(i -> i).summaryStatistics();
+    IntSummaryStatistics intSummaryStatistics = IntStream.of(list).summaryStatistics();
     
         System.out.println("The count of values is "
                            + intSummaryStatistics.getCount()); 
